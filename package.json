@@ -19,5 +19,8 @@
   "devDependencies": {
     "jasmine": "^3.5.0",
     "jsdom": "^16.0.1"
+  },
+  "dependencies": {
+    "pg": "^7.17.1"
   }
 }
