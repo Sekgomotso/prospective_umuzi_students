@@ -2,7 +2,7 @@ const Pool = require("pg").Pool;
 const pool = new Pool({
   user: "user",
   host: "localhost",
-  database: "db",
+  database: "prospective_umuzi_students",
   password: "pass",
   port: 5432
 });
@@ -25,8 +25,8 @@ helloWorld();
 
 const addNewVisitor = () => {
   pool.query(
-    "INSERT INTO Visitor values($1::1, $2::'Sekgomotso',$3::30, $4::'17/09/2020',$5::'00:00', $6::'Tumi', $7::'nice')", 
-    ["1, 'Sekgomotso',30, '17/09/2020','00:00','Tumi', 'nice'"],
+    "INSERT INTO Visitors (visitor_name, visitors_age, date_of_visit, time_of_visit, assistant, comments) values ($1, $2, $3, $4, $5, $6)", 
+    ['Sekgomotso',30, '09/17/2020','00:00','Tumi', 'nice'],
     (err, data) => {
       if (err) {
         throw err;
@@ -38,8 +38,8 @@ const addNewVisitor = () => {
 
 addNewVisitor();
 
-const deleteVisitor = () => {
-  pool.query(
-    "DELETE FROM"
-  )
-}
+// const deleteVisitor = () => {
+//   pool.query(
+//     "DELETE FROM"
+//   )
+// }
