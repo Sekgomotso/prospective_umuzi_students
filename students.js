@@ -26,7 +26,7 @@ helloWorld();
 const addNewVisitor = () => {
   pool.query(
     "INSERT INTO Visitors (visitor_name, visitors_age, date_of_visit, time_of_visit, assistant, comments) values ($1, $2, $3, $4, $5, $6)", 
-    ['Sekgomotso',30, '09/17/2020','00:00','Tumi', 'nice'],
+    ['Sekgomotso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!'],
     (err, data) => {
       if (err) {
         throw err;
@@ -38,8 +38,29 @@ const addNewVisitor = () => {
 
 addNewVisitor();
 
+// const visitorsIdName = () => {
+//   pool.query(
+//     "SELECT id, visitor_name FROM Visitors",
+//     [], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       return [];
+//     }
+//   );
+// };
+
+// visitorsIdName();
+
 // const deleteVisitor = () => {
 //   pool.query(
-//     "DELETE FROM"
-//   )
-// }
+//     "DELETE FROM Visitors WHERE $1", ['id = 1'], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log(data.rows);
+//     }
+//   );
+// };
+
+// deleteVisitor();
