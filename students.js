@@ -38,19 +38,19 @@ const addNewVisitor = () => {
 
 addNewVisitor();
 
-// const visitorsIdName = () => {
-//   pool.query(
-//     "SELECT id, visitor_name FROM Visitors",
-//     [], (err, data) => {
-//       if (err) {
-//         throw err;
-//       }
-//       return [];
-//     }
-//   );
-// };
+const visitorsIdName = () => {
+  pool.query(
+    "SELECT id, visitor_name FROM Visitors",
+    [], (err, data) => {
+      if (err) {
+        throw err;
+      }
+      console.log(data.rows);
+    }
+  );
+};
 
-// visitorsIdName();
+visitorsIdName();
 
 // const deleteVisitor = () => {
 //   pool.query(
