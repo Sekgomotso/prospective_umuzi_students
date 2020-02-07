@@ -24,20 +24,26 @@ const helloWorld = () => {
 helloWorld();
 
 // Save visitor into database
-const addNewVisitor = () => {
+const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => {
+
+  var result;
+
   pool.query(
     "INSERT INTO Visitors (visitor_name, visitors_age, date_of_visit, time_of_visit, assistant, comments) values ($1, $2, $3, $4, $5, $6)", 
-    ['Sekgomotso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!'],
-    (err, data) => {
+    [name, age, date, time, nameOfAssistant, comment],
+    async (err, data) => {
       if (err) {
         throw err;
       }
-      console.log(data.rows);
+
+      result = await data;
+      
     }
   );
+  return await result;
 };
-
-addNewVisitor();
+let result = addNewVisitor('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!')
+console.log(result)
 
 // Return visitor's names and ID
 const visitorsIdName = () => {
@@ -57,7 +63,7 @@ visitorsIdName();
 // Delete a visitor
 const deleteVisitor = () => {
   pool.query(
-    "DELETE FROM Visitors WHERE $1", [2], (err, data) => {
+    "DELETE FROM Visitors WHERE $1", [visitor_name = 'motso'], (err, data) => {
       if (err) {
         throw err;
       }
@@ -70,8 +76,9 @@ deleteVisitor();
 
 // Update a visitor
 const updateV = () => {
+
   pool.query(
-    "UPDATE Visitors SET $1", [3], (err, data) => {
+    "UPDATE Visitors", [visitor_name = 'juju'], (err, data) => {
       if (err) {
         throw err;
       }
