@@ -1,4 +1,7 @@
 const Pool = require("pg").Pool;
+
+require('dotenv').config();
+
 const pool = new Pool({
   user: "user",
   host: "localhost",
@@ -37,7 +40,7 @@ const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => 
       }
 
       result = await data;
-      
+
     }
   );
   return await result;
