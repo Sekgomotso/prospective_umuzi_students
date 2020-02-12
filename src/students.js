@@ -78,10 +78,12 @@ const deleteVisitor = () => {
 deleteVisitor();
 
 // Update a visitor
-const updateV = () => {
+const updateV = async () => {
+
+  let result;
 
   pool.query(
-    "UPDATE Visitors SET visitor_name = $1", ['juju'], (err, data) => {
+    "UPDATE Visitors SET visitor_name = $1", ['juju'], async (err, data) => {
       if (err) {
         throw err;
       }

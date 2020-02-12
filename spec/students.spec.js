@@ -21,12 +21,12 @@ describe("sql and assignment", ()=>{
 
 // Update visitor
 describe("sql and assignment", ()=>{
-    const juju = require('../src/students');
+    const ap = require('../src/students');
     it("update visitor", ()=>{
         
-        let updateV = juju('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
+        let updateV = await ap('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
         
-        expect(updateV.visitor_name).toBe("juju");
+        expect(updateV[0].visitor_name).toBe("juju");
     });
     
 });
