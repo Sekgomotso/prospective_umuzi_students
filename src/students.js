@@ -45,89 +45,89 @@ const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => 
   );
   return await result;
 };
-let result = addNewVisitor('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!')
+let result = addNewVisitor('Neo',28, '08/17/2020','00:00','Louis', 'good to meet you.')
 console.log(result)
 
-// Return visitor's names and ID
-const visitorsIdName = () => {
-  pool.query(
-    "SELECT id, visitor_name FROM Visitors",
-    [], (err, data) => {
-      if (err) {
-        throw err;
-      }
-      console.log(data.rows);
-    }
-  );
-};
+// // Return visitor's names and ID
+// const visitorsIdName = () => {
+//   pool.query(
+//     "SELECT id, visitor_name FROM Visitors",
+//     [], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log(data.rows);
+//     }
+//   );
+// };
 
-visitorsIdName();
+// visitorsIdName();
 
-// Delete a visitor
-const deleteVisitor = () => {
-  pool.query(
-    "DELETE FROM Visitors WHERE id = $1", [35], (err, data) => {
-      if (err) {
-        throw err;
-      }
-      console.log(data.rows);
-    }
-  );
-};
+// // Delete a visitor
+// const deleteVisitor = () => {
+//   pool.query(
+//     "DELETE FROM Visitors WHERE id = $1", [35], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log(data.rows);
+//     }
+//   );
+// };
 
-deleteVisitor();
+// deleteVisitor();
 
-// Update a visitor
-const updateV = async () => {
+// // Update a visitor
+// const updateV = async () => {
 
-  let result;
+//   let result;
 
-  pool.query(
-    "UPDATE Visitors SET visitor_name = $1", ['juju'], async (err, data) => {
-      if (err) {
-        throw err;
-      }
-      console.log(data.rows);
-    }
-  );
-};
+//   pool.query(
+//     "UPDATE Visitors SET visitor_name = $1", ['juju'], async (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log(data.rows);
+//     }
+//   );
+// };
 
-updateV();
+// updateV();
 
-// Return visitor's info given an id
-const visitorId = () => {
+// // Return visitor's info given an id
+// const visitorId = () => {
   
-  pool.query(
-    "SELECT * FROM Visitors WHERE id = $1", [36], (err, data) => {
-      if (err) {
-        throw err;
-      }
-      console.log(data.rows);
-    }
-  );
-};
+//   pool.query(
+//     "SELECT * FROM Visitors WHERE id = $1", [36], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log(data.rows);
+//     }
+//   );
+// };
 
-visitorId();
+// visitorId();
 
-// Delete all visitors 
-const deleteAll = () => {
-  pool.query(
-    "DELETE FROM Visitors", [], (err, data) => {
-      if (err) {
-        throw err;
-      }
-      console.log(data.rows);
-    }
-  );
-};
+// // Delete all visitors 
+// const deleteAll = () => {
+//   pool.query(
+//     "DELETE FROM Visitors", [], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log(data.rows);
+//     }
+//   );
+// };
 
-deleteAll();
+// deleteAll();
 
-module.exports = {
-  addNewVisitor,
-  visitorsIdName,
-  deleteVisitor,
-  updateV,
-  visitorId,
-  deleteAll
-}
+// module.exports = {
+//   addNewVisitor,
+//   visitorsIdName,
+//   deleteVisitor,
+//   updateV,
+//   visitorId,
+//   deleteAll
+// }

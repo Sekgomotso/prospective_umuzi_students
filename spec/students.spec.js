@@ -24,7 +24,7 @@ describe("sql and assignment", ()=>{
     const ap = require('../src/students');
     it("update visitor", ()=>{
         
-        let updateV = await ap('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
+        let updateV = ap('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
         
         expect(updateV[0].visitor_name).toBe("juju");
     });
