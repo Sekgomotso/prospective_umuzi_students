@@ -1,19 +1,20 @@
+const visitor = require('../src/students')
+
 // Save visitor into database
 describe("sql and assignment", ()=>{
-    const juju = require('../src/students');
-    it("save visitor into database", async(err, data)=>{
-        
-        let addNewVisitor = await juju ('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
-        expect(addNewVisitor[0]).toBe("motso")
+
+    it("save visitor into database", async(done)=>{
+        let addvisitor = addNewVisitor('Jabu',32, '09/17/2020','14:00','Motso', 'ok!');
+        expect(addvisitor.visitor_name).toBe("Jabu")
+        done();
     });
 });
 
 // Return Id and visitor's name
 describe("sql and assignment", ()=>{
-    const juju = require('../src/students');
     it("return Id and visitor's name", ()=>{
         
-        let addNewVisitor = juju('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
+        let addNewVisitor = visitor('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
         
         expect(addNewVisitor.data.rows).toBe("id: 27, visitor_name: 'Sekgomotso'");
     });    
