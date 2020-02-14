@@ -101,25 +101,25 @@ const visitorId = () => {
 
 visitorId();
 
-// // Delete all visitors 
-// const deleteAll = () => {
-//   pool.query(
-//     "DELETE FROM Visitors", [], (err, data) => {
-//       if (err) {
-//         throw err;
-//       }
-//       console.log(data.rows);
-//     }
-//   );
-// };
+// Delete all visitors 
+const deleteAll = () => {
+  pool.query(
+    "DELETE FROM Visitors", [], (err, data) => {
+      if (err) {
+        throw err;
+      }
+      console.log(data.rows);
+    }
+  );
+};
 
-// deleteAll();
+deleteAll();
 
-// module.exports = {
-//   addNewVisitor,
-//   visitorsIdName,
-//   deleteVisitor,
-//   updateV,
-//   visitorId,
-//   deleteAll
-// }
+module.exports = {
+  addNewVisitor,
+  visitorsIdName,
+  deleteVisitor,
+  updateV,
+  visitorId,
+  deleteAll
+}
