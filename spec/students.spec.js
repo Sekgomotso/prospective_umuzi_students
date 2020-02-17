@@ -4,8 +4,9 @@ const visitor = require('../src/students')
 describe("sql and assignment", ()=>{
 
     it("save visitor into database", async(done)=>{
-        let addvisitor = addNewVisitor('Jabu',32, '09/17/2020','14:00','Motso', 'ok!');
-        expect(addvisitor.visitor_name).toBe("Jabu")
+        
+        let addvisitor = await visitor('Jabu',32, '09/17/2020','14:00','Motso', 'ok!');
+        expect(addvisitor.visitor_name).toBe([])
         done();
     });
 });
@@ -14,9 +15,9 @@ describe("sql and assignment", ()=>{
 describe("sql and assignment", ()=>{
     it("return Id and visitor's name", ()=>{
         
-        let addNewVisitor = visitor('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
+        let addNewVisitor = visitor();
         
-        expect(addNewVisitor.data.rows).toBe("id: 27, visitor_name: 'Sekgomotso'");
+        expect(addNewVisitor.data.rows[0]).toBe({ id: 1, visitor_name: 'Sekgomotso' });
     });    
 });
 

@@ -38,7 +38,7 @@ const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => 
 };
 
 // addNewVisitor('Karabo',28, '05/17/2020','00:00','Nkunzi', 'ola.');
-// console.log(addNewVisitor);
+console.log(addNewVisitor());
 
 // Return visitor's names and ID
 const visitorsIdName = () => {
@@ -48,7 +48,7 @@ const visitorsIdName = () => {
       if (err) {
         throw err;
       }
-      console.log(data.rows);
+      console.log(data.rows[0]);
     }
   );
 };
