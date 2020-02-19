@@ -1,11 +1,19 @@
 const express = require('express');
-const path = require('path');
-let app = express();
+const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false}));
 
 // form route
-app.use(express.static('public'));
-app.get("../src/form.html", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/forms.html"))
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/forms.html")
 });
 
-app.listen(8085);
+// submit button route
+app.post('/http://localhost:3000/new_visit', (req, res) => {
+    console.log("done");
+    return;
+});
+
+app.listen(3000, ()=>{
+    console.log("finally")
+});

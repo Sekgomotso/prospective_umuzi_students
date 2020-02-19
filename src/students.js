@@ -33,7 +33,7 @@ const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => 
   .query(
     "INSERT INTO Visitors (visitor_name, visitors_age, date_of_visit, time_of_visit, assistant, comments) values ($1, $2, $3, $4, $5, $6)", 
     [name, age, date, time, nameOfAssistant, comment])
-  .then(data => console.log(data.rows))
+  .then(data => (data.rows))
   .catch(err => console.error("nope", err.stack))
 };
 
