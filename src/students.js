@@ -49,6 +49,7 @@ const visitorsIdName = () => {
         throw err;
       }
       console.log(data.rows[0]);
+      return;
     }
   );
 };
@@ -58,11 +59,12 @@ visitorsIdName();
 // Delete a visitor
 const deleteVisitor = () => {
   pool.query(
-    "DELETE FROM Visitors WHERE id = $1", [35], (err, data) => {
+    "DELETE FROM Visitors WHERE id = $1", [7], (err, data) => {
       if (err) {
         throw err;
       }
       console.log(data.rows);
+      return;
     }
   );
 };
@@ -95,6 +97,7 @@ const visitorId = () => {
         throw err;
       }
       console.log(data.rows);
+      return;
     }
   );
 };

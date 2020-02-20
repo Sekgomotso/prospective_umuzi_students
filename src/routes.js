@@ -4,6 +4,8 @@ const path = require('path')
 
 const Pool = require("pg").Pool;
 
+const pool = new Pool();
+
 require('dotenv').config();
 
 // form route
