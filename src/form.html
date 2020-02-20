@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, intitial-scale=1.0">
+
     <title>Visitor form</title>
 </head>
 <body>
 
     <h1>Visitor's form</h1>
 
-    <form action="http://localhost:3000/new_visit" method="POST">
+    <form action="/new_visit" method="POST">
 
         Name <input type="text" name="visitor_name" placeholder="Visitor name">
         <br><br>
@@ -20,12 +23,10 @@
         Time of visit <input type="time" name="time_of_visit">
         <br><br>
         Comments <input type="text" placeholder="Comments">
-
-    </form><br>
-
-    <div>
+        <br><br>
         <button>Submit</button>
-    </div>
+
+    </form>
 
 </body>
     
