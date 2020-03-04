@@ -1,47 +1,50 @@
-const visitor = require('../src/students')
+const visitor = require('../src/students');
 
 // Save visitor into database
 describe("sql and assignment", ()=>{
 
     it("save visitor into database", async()=>{
         
-        let addvisitor = await visitor('Jabu',32, '09/17/2020','14:00','Motso', 'ok!');
-        expect(addvisitor.visitor_name).toBe([])
+        let addNewVisitor = await visitor;
+        expect(addNewVisitor).toEqual({ addNewVisitor: Function });
         
     });
 });
 
-// // Return Id and visitor's name
-// describe("sql and assignment", ()=>{
-//     it("return Id and visitor's name", ()=>{
-        
-//         let addNewVisitor = visitor;
-        
-//         expect(addNewVisitor).toEqual("id: 1, visitor_name: 'Sekgomotso'");
-//     });    
-// });
+// Return Id and visitor's name
+describe("sql and assignment", ()=>{
 
-// // delete a visitor
-// describe("jasmine", ()=>{
-//     it("should delete a visitor", ()=>{
+    const Visitor = require('../src/students');
 
-//         let motso = visitor;
+    it("return Id and visitor's name", async()=>{
 
-//         expect(motso).toEqual([]);
-//     });
-// });
-
-// // Update visitor
-// describe("sql and assignment", ()=>{
-//     const ap = require('../src/students');
-//     it("update visitor", ()=>{
+        let visitorsIdName  = await Visitor ('juju', 28, '05/17/2020', '00:00', 'Nkunzi', 'ola.');
         
-//         let updateV = ap('motso',30, '09/17/2020','00:00','Tumi', 'nice meeting you!');
+        expect(visitorsIdName).toEqual({ id: 27, visitor_name: 'juju' } );
+    });    
+});
+
+// delete a visitor
+describe("jasmine", ()=>{
+    it("should delete a visitor", ()=>{
+
+        let motso = visitor;
+
+        expect(motso).toEqual({ });
+    });
+});
+
+// Update visitor
+describe("sql and assignment", ()=>{
+    const ap = require('../src/students');
+    it("update visitor", ()=>{
         
-//         expect(updateV[0].visitor_name).toBe("juju");
-//     });
+        let updateV = ap;
+        
+        expect(updateV.visitor_name[0]).toBe("juju");
+    });
     
-// });
+});
 
 // delete all visitors
 describe("node and sql assignment", ()=>{
@@ -49,6 +52,6 @@ describe("node and sql assignment", ()=>{
     let juju = db;
 
     it('delete all visitors', ()=>{
-        expect(juju).toBe([])
+        expect(juju).toEqual({ })
     });
 });
