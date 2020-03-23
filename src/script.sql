@@ -1,5 +1,3 @@
-CREATE DATABASE prospective_umuzi_students;
-
 CREATE TABLE Visitors(
   id serial primary key,
   visitor_name varchar(50),
