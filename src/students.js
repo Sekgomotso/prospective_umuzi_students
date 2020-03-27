@@ -3,21 +3,21 @@ const Pool = require("pg").Pool;
 require('dotenv').config();
 
 const pool = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.DATABASE,
-  password: process.env.PGPASSWORD,
-  port: process.env.PORT
+  user: "user",
+  host: "localhost",
+  database: "db",
+  password: "pass",
+  port: 5432
 });
 
 pool.connect();
 
 // Save visitor into database
-const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => {
+async function addNewVisitor (name, age, date, time, nameOfAssistant, comment) {
 
   try{
   
-    query = await pool.query(
+    const query = await pool.query(
       "INSERT INTO Visitors (visitor_name, visitors_age, date_of_visit, time_of_visit, assistant, comments) values ($1, $2, $3, $4, $5, $6)", 
       [name, age, date, time, nameOfAssistant, comment]);
 
@@ -33,25 +33,29 @@ const addNewVisitor = async(name, age, date, time, nameOfAssistant, comment) => 
 const visitorsIdName = async () => {
 
   try {
-    query = pool.query(
+    const query = await pool.query(
       "SELECT id, visitor_name FROM Visitors",
       []);
 
-      return query.rows
+      console.log(query.rows[0])
+      return;
 
   } catch(err){
      console.log(err)
   }
 };
 
+visitorsIdName();
+
 // Delete a visitor
-const deleteVisitor = async () => {
+const deleteVisitor = async (id) => {
   try {
-    query = pool.query(
-      "DELETE FROM Visitors WHERE id = ${id}", [46]);
+    const query = await pool.query(
+      "DELETE FROM Visitors WHERE id = $1", [id]);
 
 
-      return query.rows
+      console.log(query.rows)
+      return;
 
   }catch(err){
     console.log(err)
@@ -60,11 +64,11 @@ const deleteVisitor = async () => {
 };
 
 // Update a visitor
-const updateV = async () => {
+const updateV = async (id, name, age, date, time, nameOfAssistant, comment) => {
 
   try {
 
-    query = pool.query(
+    const query = await pool.query(
       "UPDATE Visitors SET visitor_name = ${visitor_name}", []);
 
       return query.rows;
@@ -80,7 +84,7 @@ const visitorId = async () => {
 
   try {
     
-    query = pool.query(
+    const query = await pool.query(
       "SELECT * FROM Visitors WHERE id = ${id}", []);
     
       return query.rows
@@ -96,7 +100,7 @@ const deleteAll = async () => {
 
   try {
     
-    query = pool.query(
+    const query = await pool.query(
       "DELETE FROM Visitors", []);
 
       await pool.end()

@@ -1,26 +1,23 @@
-const visitor = require('../src/students');
-
 // Save visitor into database
 describe("sql and assignment", ()=>{
+    const {addNewVisitor,
+        visitorsIdName} = require('../src/students');
 
     it("save visitor into database", async()=>{
         
-        let addNewVisitor = await visitor;
-        expect(addNewVisitor).toEqual({ addNewVisitor: Function });
-        
+        let newVisit = await addNewVisitor("Jojo", 12, "30/02/2020", "20:00", "MK", "dog");
+
+        expect(newVisit[0].name).toEqual("sekgomotso");
+
     });
-});
 
-// Return Id and visitor's name
-describe("sql and assignment", ()=>{
-
-    const Visitor = require('../src/students');
+    // Return Id and visitor's name
 
     it("return Id and visitor's name", async()=>{
 
-        let visitorsIdName  = await Visitor ('juju', 28, '05/17/2020', '00:00', 'Nkunzi', 'ola.');
+        let visit  = await visitorsIdName ();
         
-        expect(visitorsIdName).toEqual({ id: 27, visitor_name: 'juju' } );
+        expect(visit).toEqual({ id: 1, visitor_name: 'sekgomotso' });
     });    
 });
 
