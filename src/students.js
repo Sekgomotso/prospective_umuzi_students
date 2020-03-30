@@ -3,11 +3,11 @@ const Pool = require("pg").Pool;
 require('dotenv').config();
 
 const pool = new Pool({
-  user: "user",
-  host: "localhost",
-  database: "db",
-  password: "pass",
-  port: 5432
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.DATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PORT
 });
 
 pool.connect();
@@ -45,8 +45,6 @@ const visitorsIdName = async () => {
   }
 };
 
-visitorsIdName();
-
 // Delete a visitor
 const deleteVisitor = async (id) => {
   try {
@@ -54,7 +52,7 @@ const deleteVisitor = async (id) => {
       "DELETE FROM Visitors WHERE id = $1", [id]);
 
 
-      console.log(query.rows)
+      console.log('deleted')
       return;
 
   }catch(err){
@@ -64,14 +62,15 @@ const deleteVisitor = async (id) => {
 };
 
 // Update a visitor
-const updateV = async (id, name, age, date, time, nameOfAssistant, comment) => {
+const updateV = async (name, id) => {
 
   try {
 
     const query = await pool.query(
-      "UPDATE Visitors SET visitor_name = ${visitor_name}", []);
+      "UPDATE Visitors SET visitor_name = $1", [name]);
 
-      return query.rows;
+      console.log(query.rows)
+      return;
 
   } catch(err) {
     console.log(err);
@@ -80,14 +79,15 @@ const updateV = async (id, name, age, date, time, nameOfAssistant, comment) => {
 };
 
 // Return visitor's info given an id
-const visitorId = async () => {
+const visitorId = async (id) => {
 
   try {
     
     const query = await pool.query(
-      "SELECT * FROM Visitors WHERE id = ${id}", []);
+      "SELECT * FROM Visitors WHERE id = $1", [id]);
     
-      return query.rows
+      console.log(query.rows)
+      return;
 
   } catch(err) {
     console.log(err)
@@ -104,7 +104,8 @@ const deleteAll = async () => {
       "DELETE FROM Visitors", []);
 
       await pool.end()
-      return query.rows
+      console.log(query.rows)
+      return;
 
   } catch(err) {
     console.log(err)

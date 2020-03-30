@@ -1,54 +1,64 @@
 // Save visitor into database
 describe("sql and assignment", ()=>{
     const {addNewVisitor,
-        visitorsIdName} = require('../src/students');
+        visitorsIdName,
+        deleteVisitor,
+        updateV,
+        visitorId,
+        deleteAll} = require('../src/students');
 
     it("save visitor into database", async()=>{
         
-        let newVisit = await addNewVisitor("Jojo", 12, "30/02/2020", "20:00", "MK", "dog");
+        let newVisit = await addNewVisitor("She", 18, "30/03/2019", "12:00", "He", "Ayt");
 
-        expect(newVisit[0].name).toEqual("sekgomotso");
+        expect(newVisit[0].visitor_name).toEqual("sekgomotso");
 
     });
 
     // Return Id and visitor's name
-
     it("return Id and visitor's name", async()=>{
 
-        let visit  = await visitorsIdName ();
+        let visitOne  = await visitorsIdName ();
         
-        expect(visit).toEqual({ id: 1, visitor_name: 'sekgomotso' });
-    });    
-});
-
-// delete a visitor
-describe("jasmine", ()=>{
-    it("should delete a visitor", ()=>{
-
-        let motso = visitor;
-
-        expect(motso).toEqual({ });
-    });
-});
-
-// Update visitor
-describe("sql and assignment", ()=>{
-    const ap = require('../src/students');
-    it("update visitor", ()=>{
-        
-        let updateV = ap;
-        
-        expect(updateV.visitor_name[0]).toBe("juju");
+        expect(visitOne).toEqual({ id: 1, visitor_name: 'sekgomotso' });
     });
     
-});
+    // Delete a visitor
+    it("should delete a visitor given an id", async() => {
+        let deleteOne = await deleteVisitor (9);
 
-// delete all visitors
-describe("node and sql assignment", ()=>{
-    const db = require('../src/students');
-    let juju = db;
-
-    it('delete all visitors', ()=>{
-        expect(juju).toEqual({ })
+        expect(deleteOne).toEqual('deleted')
     });
+
+    // Update a visitor
+    it("update a visitor", async() => {
+        let newUpdate = await updateV ('cavin');
+
+        expect(newUpdate.visitor_name).toEqual('cavin')
+    });
+
+    // return visitor info given an id
+    it("should return specified visitor", async() => {
+        let infoV = await visitorId(4);
+
+        expect(infoV).toEqual([
+            {
+              id: 2,
+              visitor_name: 'cavin',
+              visitors_age: 28,
+              date_of_visit: '18/02/2020',
+              time_of_visit: '12:00',
+              assistant: 'George',
+              comments: 'Done'
+            }
+          ])
+    });
+
+    // delete all visitors
+    it("should delete all visitors", async() => {
+        let allD = await deleteAll();
+
+        expect(allD).toEqual([])
+    });
+
 });
