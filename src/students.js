@@ -12,6 +12,32 @@ const pool = new Pool({
 
 pool.connect();
 
+// create table
+const visitorsTable = async () => {
+  try{
+     const query = await pool.query(
+        `CREATE TABLE IF NOT EXISTS
+          Visitors(
+            id serial primary key,
+            visitor_name varchar(50),
+            visitors_age int,
+            date_of_visit varchar(10),
+            time_of_visit varchar(10),
+            assistant varchar(50),
+            comments varchar(100);`
+    )
+     console.log(query.rows)
+
+  }catch(err) {
+      
+      console.log(err);
+
+  }
+
+  pool.end();
+
+}
+
 // Save visitor into database
 async function addNewVisitor (name, age, date, time, nameOfAssistant, comment) {
 
@@ -27,6 +53,9 @@ async function addNewVisitor (name, age, date, time, nameOfAssistant, comment) {
     console.log(err)
 
   }
+
+  pool.end();
+
 };
 
 // Return an array of visitor's names and ID
@@ -43,6 +72,9 @@ const visitorsIdName = async () => {
   } catch(err){
      console.log(err)
   }
+
+  pool.end();
+
 };
 
 // Delete a visitor
@@ -59,6 +91,9 @@ const deleteVisitor = async (id) => {
     console.log(err)
 
   }
+
+  pool.end();
+
 };
 
 // Update a visitor
@@ -76,6 +111,8 @@ const updateV = async (name, id) => {
     console.log(err);
   }
 
+  pool.end();
+
 };
 
 // Return visitor's info given an id
@@ -92,6 +129,8 @@ const visitorId = async (id) => {
   } catch(err) {
     console.log(err)
   }
+
+  pool.end();
   
 };
 
@@ -111,9 +150,13 @@ const deleteAll = async () => {
     console.log(err)
     await pool.end();
   }
+
+  pool.end();
+
 };
 
 module.exports = {
+  visitorsTable,
   addNewVisitor,
   visitorsIdName,
   deleteVisitor,
